@@ -20,9 +20,9 @@ class FirebaseNotificationServiceProvider extends ServiceProvider
         // $this->loadRoutesFrom(__DIR__.'/routes.php');
 
         if ($this->app->runningInConsole()) {
-            // $this->publishes([
-            //     __DIR__.'/../config/config.php' => config_path('firebase-notification.php'),
-            // ], 'firebase-notif');
+            $this->publishes([
+                __DIR__.'/../config/config.php' => config_path('firebase-notification.php'),
+            ], 'firebase-notif');
 
             $this->publishes([
                 base_path().'/vendor/brozot/laravel-fcm/config/fcm.php' => config_path('fcm.php'),

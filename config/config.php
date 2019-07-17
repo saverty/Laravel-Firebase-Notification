@@ -5,5 +5,6 @@
  */
 return [
     "fcm_server_key" => "",
-    "fcm_sender_id" => ""
+    "fcm_sender_id" => "",
+    "tables" => ['users']
 ];

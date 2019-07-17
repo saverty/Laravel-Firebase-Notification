@@ -5,7 +5,7 @@ namespace Saverty\FirebaseNotification;
 use Saverty\FirebaseNotification\FirebaseNotification;
 
 trait FirebaseNotificationTrait{
-    public function addFcmToken($token){
+    public function setFcmToken($token){
         $this->fcm_token = $token;
         $this->save();
 

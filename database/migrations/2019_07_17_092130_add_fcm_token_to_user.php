@@ -13,21 +13,14 @@ class AddFcmTokenToUser extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->string('fcm_token')->nullable();
-        });
-    }
-
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('fcm_token');
-
-        });
+        foreach(config('firebase-notification.tables') as $t){
+            if(Schema::hasTable($t)){
+                if (!Schema::hasColumn($t, 'fcm_token')){
+                    Schema::table($t, function (Blueprint $table) {
+                        $table->string('fcm_token')->nullable();
+                    });
+                }
+            }
+        }
     }
 }
