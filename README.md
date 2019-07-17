@@ -1,6 +1,4 @@
 
-  
-
 # Laravel Firebase Notification
 
 
@@ -40,3 +38,4 @@ Send notification using Firebase and Laravel
     FirebaseNotification::sendTo($users,'title', 'This is the body', [], null)
 
  
+
