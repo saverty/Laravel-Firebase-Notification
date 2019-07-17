@@ -1,53 +1,42 @@
-# Very short description of the package
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/saverty/firebase-notification.svg?style=flat-square)](https://packagist.org/packages/saverty/firebase-notification)
-[![Build Status](https://img.shields.io/travis/saverty/firebase-notification/master.svg?style=flat-square)](https://travis-ci.org/saverty/firebase-notification)
-[![Quality Score](https://img.shields.io/scrutinizer/g/saverty/firebase-notification.svg?style=flat-square)](https://scrutinizer-ci.com/g/saverty/firebase-notification)
-[![Total Downloads](https://img.shields.io/packagist/dt/saverty/firebase-notification.svg?style=flat-square)](https://packagist.org/packages/saverty/firebase-notification)
+  
 
-This is where your description should go. Try and limit it to a paragraph or two, and maybe throw in a mention of what PSRs you support to avoid any confusion with users and contributors.
+# Laravel Firebase Notification
 
-## Installation
 
-You can install the package via composer:
+Send notification using Firebase and Laravel
 
-```bash
-composer require saverty/firebase-notification
-```
+### Download the package using composer
 
-## Usage
+    composer require ... 
 
-``` php
-// Usage description here
-```
+### Add the package in app.php 
+	"providers" => [
+		"Saverty/FirebaseNotification::class"
+	]
 
-### Testing
+### Publish the package
 
-``` bash
-composer test
-```
+    php artisan vendor publish
 
-### Changelog
+### Run the migrations 
 
-Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recently.
+    php artisan migrate
 
-## Contributing
+### Features 
+#### Set the user FCM token 
 
-Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
+    $user = Auth::user();
+    $user->setFcmToken('token');
 
-### Security
+#### Send notification to a specific user 
 
-If you discover any security related issues, please email steve.averty1992@gmail.com instead of using the issue tracker.
+    $user = Auth::user();
+	$user->sendFirebaseNotification('title', 'This is the body', ['data' => 'this is an example'], 'https://google.fr);
 
-## Credits
+#### Send notification to many users 
 
-- [Steve Averty](https://github.com/saverty)
-- [All Contributors](../../contributors)
+    $users = User::all();
+    FirebaseNotification::sendTo($users,'title', 'This is the body', [], null)
 
-## License
-
-The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
-
-## Laravel Package Boilerplate
-
-This package was generated using the [Laravel Package Boilerplate](https://laravelpackageboilerplate.com).
+ 
